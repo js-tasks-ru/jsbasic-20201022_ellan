@@ -27,4 +27,3 @@ function sayHello() {
   }
 }
 
-sayHello();
