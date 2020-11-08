@@ -7,11 +7,8 @@
 function filterRange(arr, a, b){
 	
 	arr.filter(
-		function(item){
-			
-			if(item >= a && item <= b){
-				return item;
-			}
+		function(item){			
+			return (item >= a && item <= b);
 		}
 	);
 }
