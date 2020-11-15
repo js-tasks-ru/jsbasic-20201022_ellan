@@ -4,14 +4,8 @@
  * @param {number} b
  * @returns {number[]}
  */
-function filterRange(arr, a, b){
-	
-	arr.filter(
-		function(item){
-			
-			if(item >= a && item <= b){
-				return item;
-			}
-		}
-	);
+function filterRange(arr, a, b) {
+	return arr.filter((num) => {
+	  return a <= num && num <= b;
+	});
 }
