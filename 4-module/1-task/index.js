@@ -18,9 +18,9 @@ function makeFriendsList(friends) {
   });
 
   for (const iterator of initials) {
-    const li = document.createElement('<li>');
+    const li = document.createElement('li');
     li.innerHTML = iterator;
-    ulList.append('<li>');
+    ulList.append(li);
   }
   return ulList;
 }
