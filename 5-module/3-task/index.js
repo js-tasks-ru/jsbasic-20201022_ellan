@@ -3,14 +3,14 @@ function initCarousel() {
   let slidesAmount = 4;
   let elem = document.querySelector('[data-carousel-holder]');
 
-  let carouselInnerElem = elem.querySelector('.carousel__inner');
+  let carouselInnerElem = elem.querySelector('.carousel__inner');//зачем нужен carousel__inner? Почему carousel-holder c data?
   let carouselArrowRight = elem.querySelector('.carousel__arrow_right');
   let carouselArrowLeft = elem.querySelector('.carousel__arrow_left');
 
-  update();
+  update();//зачем здесь вызов update()?
 
   elem.onclick = ({target}) => {
-    if (target.closest('.carousel__arrow_right')) {
+    if (target.closest('.carousel__arrow_right')) {//можно ли обойтись без метода closest?
       next();
     }
 

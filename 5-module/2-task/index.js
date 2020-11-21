@@ -7,3 +7,4 @@ function toggleText() {
     textElement.hidden = !isTextElementHidden;
   });
 }
+
