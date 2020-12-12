@@ -5,8 +5,12 @@
  * @returns {string}
  */
 function showSalary(data, age) {
-  return data
-    .filter(item => item.age <= age)
-    .map(item => `${item.name}, ${item.balance}`)
-    .join('\n');
+ const result = data.map(item => {
+
+		if (item.age <= age) {
+			return filteredUsers = `${item.name}, ${item.balance}`;
+		}
+	}).join('\n');
+
+	return result;
 }
