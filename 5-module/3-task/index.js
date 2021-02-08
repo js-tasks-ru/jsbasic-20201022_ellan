@@ -1,48 +1,35 @@
 function initCarousel() {
-  let currentSlideNumber = 0;
-  let slidesAmount = 4;
-  let elem = document.querySelector('[data-carousel-holder]');
+  const carouselInner = document.querySelector('.carousel__inner');
+  const rightArrow = document.querySelector('.carousel__arrow.carousel__arrow_right');
+  const leftArrow = document.querySelector('.carousel__arrow.carousel__arrow_left');
+  leftArrow.style.display = 'none';
+  const shift = carouselInner.offsetWidth;
+  let position = 0;
+  let currentSlideNumber = 1;
+  const slidesAmount = 4;
 
-  let carouselInnerElem = elem.querySelector('.carousel__inner');//зачем нужен carousel__inner? Почему carousel-holder c data?
-  let carouselArrowRight = elem.querySelector('.carousel__arrow_right');
-  let carouselArrowLeft = elem.querySelector('.carousel__arrow_left');
-
-  update();//зачем здесь вызов update()?
-
-  elem.onclick = ({target}) => {
-    if (target.closest('.carousel__arrow_right')) {//можно ли обойтись без метода closest?
-      next();
-    }
-
-    if (target.closest('.carousel__arrow_left')) {
-      prev();
-    }
+  rightArrow.onclick = () => {
+    if (currentSlideNumber < 4) {
+      position -= shift;
+      carouselInner.style.transform = `translateX(${position}px)`;
+      currentSlideNumber++; 
+      leftArrow.style.display = '';
+    } 
+    if (currentSlideNumber == slidesAmount) {
+      rightArrow.style.display = 'none';
+    } 
   };
 
-  function next() {
-    currentSlideNumber++;
-    update();
-  }
-
-  function prev() {
-    currentSlideNumber--;
-    update();
-  }
-
-  function update() {
-    let offset = -carouselInnerElem.offsetWidth * currentSlideNumber;
-    carouselInnerElem.style.transform = `translateX(${offset}px)`;
-
-    if (currentSlideNumber == slidesAmount - 1) {
-      carouselArrowRight.style.display = 'none';
-    } else {
-      carouselArrowRight.style.display = '';
+  leftArrow.onclick = () => {
+    if (currentSlideNumber > 1) {
+      position += shift;
+      carouselInner.style.transform = `translate(${position}px)`;
+      currentSlideNumber--;
+      rightArrow.style.display = '';
+    } 
+    if (currentSlideNumber == 1) {
+      leftArrow.style.display = 'none';
     }
-
-    if (currentSlideNumber == 0) {
-      carouselArrowLeft.style.display = 'none';
-    } else {
-      carouselArrowLeft.style.display = '';
-    }
-  }
+  };
+  
 }
